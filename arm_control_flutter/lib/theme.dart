@@ -11,16 +11,13 @@ class AppColors {
   static const darkBlue = Color(0xFF022B3A);
   static const lightBlue = Color(0xFFB2BEC1);
   static const pink = Color(0xFFC75E61);
-  static const red = Color(0xFF8F2220);
-  static const green = Color(0xFF78C178);
-  static const white = Color(0xFDFFFFFF);
 }
 
 ColorScheme colorScheme = const ColorScheme.dark(
   primary: AppColors.pink,
-  primaryVariant: AppColors.red,
-  secondary: AppColors.green,
-  secondaryVariant: AppColors.green,
+  primaryVariant: AppColors.pink,
+  secondary: AppColors.lightBlue,
+  secondaryVariant: AppColors.lightBlue,
   surface: AppColors.darkBlue,
   background: AppColors.darkBlue,
 );
