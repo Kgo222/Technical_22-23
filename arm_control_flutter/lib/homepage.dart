@@ -58,23 +58,39 @@ class _HomePageState extends State<HomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
               'lib/images/HeaderImage.jpg',
-              width: 600,
-              height: 240,
-              fit: BoxFit.cover,
+              width: 900,
+              height: 300,
+              fit: BoxFit.contain,
             ),
-            Container(
-              margin: EdgeInsets.all(20),
-              child: ElevatedButton(
-                child: Text("click me"),
-                onPressed: () {
-                  print('you clicked me');
-                },
-              )
-            )
+            Row(
+              children:[
+                Container(
+                  margin: EdgeInsets.all(20),
+                  alignment: Alignment.centerLeft,
+                  child: ElevatedButton(
+                    child: Text("click me"),
+                    onPressed: () {
+                      print('you clicked me');
+                    },
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.centerRight,
+                  margin: EdgeInsets.all(20),
+                  child: ElevatedButton(
+                    child: Text("click me"),
+                    onPressed: () {
+                      print('you clicked me');
+                    },
+                  ),
+                ),
+              ] //children
+            ),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
