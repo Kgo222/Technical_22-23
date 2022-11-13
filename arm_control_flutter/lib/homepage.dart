@@ -66,6 +66,15 @@ class _HomePageState extends State<HomePage> {
               height: 240,
               fit: BoxFit.cover,
             ),
+            Container(
+              margin: EdgeInsets.all(20),
+              child: ElevatedButton(
+                child: Text("click me"),
+                onPressed: () {
+                  print('you clicked me');
+                },
+              )
+            )
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
