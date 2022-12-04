@@ -26,6 +26,8 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -69,9 +71,27 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               children:[
+                Slider(
+                  value: 0,
+                  min: 0,
+                  max: 100,
+                  divisions: 10,
+                  activeColor: Colors.green,
+                  inactiveColor: Colors.orange,
+                  label: 'Set volume value',
+                  onChanged: (double newValue) {
+                    setState(() {
+                      value = newValue.round();
+                    });
+                  },
+                ),
+              ],
+            ),
+            Row(
+              children:[
                 Container(
                   margin: EdgeInsets.all(20),
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   child: ElevatedButton(
                     child: Text("click me"),
                     onPressed: () {
@@ -80,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.center,
                   margin: EdgeInsets.all(20),
                   child: ElevatedButton(
                     child: Text("click me"),
