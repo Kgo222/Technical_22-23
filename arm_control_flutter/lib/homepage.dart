@@ -68,25 +68,45 @@ class _HomePageState extends State<HomePage> {
               fit: BoxFit.contain,
             ),
             Row(
+                mainAxisAlignment: MainAxisAlignment.center,
               children:[
                 Container(
                   margin: EdgeInsets.all(20),
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   child: ElevatedButton(
                     child: Text("click me"),
                     onPressed: () {
                       print('you clicked me');
                     },
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.purple,
+                    ),
                   ),
                 ),
                 Container(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.center,
                   margin: EdgeInsets.all(20),
                   child: ElevatedButton(
                     child: Text("click me"),
                     onPressed: () {
                       print('you clicked me');
                     },
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.purple,
+                    ),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.all(20),
+                  child: ElevatedButton(
+                    child: Text("click me"),
+                    onPressed: () {
+                      print('you clicked me');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.purple,
+                    ),
                   ),
                 ),
               ] //children
