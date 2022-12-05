@@ -13,8 +13,7 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
 
-  int _counter = 0;
-
+  double _currentSliderValue = 20;
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -22,14 +21,13 @@ class _HomePageState extends State<HomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
     });
   }
 
-  }
 
   @override
   Widget build(BuildContext context) {
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -72,19 +70,16 @@ class _HomePageState extends State<HomePage> {
             Row(
               children:[
                 Slider(
-                  value: 0,
-                  min: 0,
+                  value: _currentSliderValue,
                   max: 100,
-                  divisions: 10,
-                  activeColor: Colors.green,
-                  inactiveColor: Colors.orange,
-                  label: 'Set volume value',
-                  onChanged: (double newValue) {
+                  divisions: 100,
+                  label: _currentSliderValue.round().toString(),
+                  onChanged: (double value) {
                     setState(() {
-                      value = newValue.round();
+                      _currentSliderValue = value;
                     });
                   },
-                ),
+               ),
               ],
             ),
             Row(
