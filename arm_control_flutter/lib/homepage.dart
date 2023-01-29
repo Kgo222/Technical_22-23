@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              'lib/images/HeaderImage.jpg',
+              'lib/images/logo_header.jpg',
               width: 900,
               height: 300,
               fit: BoxFit.contain,
@@ -181,15 +181,19 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Row(
+                mainAxisAlignment: MainAxisAlignment.center,
               children:[
                 Container( //Button 1
-                  margin: EdgeInsets.all(20),
                   alignment: Alignment.center,
+                  margin: EdgeInsets.all(20),
                   child: ElevatedButton(
                     child: Text("click me"),
                     onPressed: () {
                       print('you clicked me');
                     },
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.purple,
+                    ),
                   ),
                 ),
                 Container( //Button 2
@@ -200,6 +204,9 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       print('you clicked me');
                     },
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.purple,
+                    ),
                   ),
                 ),
                 Container( //Button 3
@@ -210,6 +217,9 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       print('you clicked me');
                     },
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.purple,
+                    ),
                   ),
                 ),
               ] //children
