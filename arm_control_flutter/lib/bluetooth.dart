@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter/material.dart';
-import 'package:wece_glasses/globals.dart';
 
 // Bluetooth connection screen
 class BluetoothConnectScreen extends StatefulWidget {
