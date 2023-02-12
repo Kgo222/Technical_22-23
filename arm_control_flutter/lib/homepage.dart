@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:arm_control_flutter/bluetooth_handler.dart';
 import 'package:arm_control_flutter/theme.dart';
+import 'globals.dart';
 import 'theme.dart';
+import 'bluetooth_handler.dart';
+import 'bluetooth.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -14,6 +18,31 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   int _counter = 0;
+  @override
+  void initState() {
+    super.initState();
+    bleHandler = BLEHandler(setStateCallback);
+    //TODO run at startup
+  }
+
+  void setStateCallback() {
+    setState(() {});
+  }
+
+  void connectDevicePrompt() {
+    // Show prompt for connecting a device
+    showModalBottomSheet<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return const BluetoothConnectScreen();
+        });
+  }
+
+  void disconnectDevice() {
+    setState(() {
+      bleHandler.disconnect();
+    });
+  }
 
   void _incrementCounter() {
     setState(() {

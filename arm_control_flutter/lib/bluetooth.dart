@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter/material.dart';
+import 'package:arm_control_flutter/globals.dart';
 
 // Bluetooth connection screen
 class BluetoothConnectScreen extends StatefulWidget {
@@ -58,10 +59,6 @@ class _BluetoothConnectScreen extends State<BluetoothConnectScreen> {
 
   Future<void> connectDevice(BluetoothDevice device) async {
     await bleHandler.connect(device);
-    deviceScreenHandler.start();
-
-    // Start waiting for notifications
-    bleHandler.subscribeNotifications();
 
     // Exit screen
     Navigator.pop(context);

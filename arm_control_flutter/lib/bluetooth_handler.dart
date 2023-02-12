@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue/flutter_blue.dart';
-import 'package:wece_glasses/globals.dart';
+import 'package:arm_control_flutter/globals.dart';
 import 'dart:convert';
-import 'package:arm_control_flutter/costants.dart';
+import 'package:arm_control_flutter/constants.dart';
 import 'dart:io' show Platform;
 
 class BLEHandler {
@@ -33,7 +33,6 @@ class BLEHandler {
       if(s == BluetoothDeviceState.disconnected) {
         // Accessing the deviceScreenHandler here is a little awkward, but it gets the job done
         // Equivalent to disconnectDevice in homepage.dart
-        deviceScreenHandler.stop();
         disconnect(); // Cancel subscription streams
         setState(); // Update UI
       }
@@ -46,33 +45,12 @@ class BLEHandler {
 
   }
 
-  void subscribeNotifications() async {
-    for (BluetoothService service in services) {
-      for (BluetoothCharacteristic characteristic in service.characteristics) {
-        if(characteristic.properties.notify) {
-          await characteristic.setNotifyValue(true);
-          notificationSubscription = characteristic.value.listen((value) async {
-            String s = String.fromCharCodes(value);
-            if(s == Constants.longPressCode) {
-              deviceScreenHandler.nextScreen();
-              print("button click");
-            }
-          });
-          await Future.delayed(const Duration(milliseconds: 500));
-          return;
-        }
-      }
-    }
-  }
+
 
   void bluetoothWrite(text, screenNum, [mode=0]) async {
     for (BluetoothService service in services) {
       for (BluetoothCharacteristic characteristic in service.characteristics) {
         if (characteristic.uuid.toString() == Constants.uuid) {
-
-          if(screenNum != deviceScreenHandler.currentScreen.getScreenNum()){
-            return; // Data not related to current screen. Don't send.
-          }
           // Format data
           String data = "#" + screenNum.toString() + "|" + text + "|" + mode.toString();
 
