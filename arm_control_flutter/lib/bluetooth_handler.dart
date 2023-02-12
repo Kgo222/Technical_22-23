@@ -47,12 +47,12 @@ class BLEHandler {
 
 
 
-  void bluetoothWrite(text, screenNum, [mode=0]) async {
+  void bluetoothWrite(sliderVal, sliderNum) async {
     for (BluetoothService service in services) {
       for (BluetoothCharacteristic characteristic in service.characteristics) {
         if (characteristic.uuid.toString() == Constants.uuid) {
           // Format data
-          String data = "#" + screenNum.toString() + "|" + text + "|" + mode.toString();
+          String data = "#" + sliderNum.toString() + "|" + sliderVal.toString();
 
           if (Platform.isAndroid)
           {
