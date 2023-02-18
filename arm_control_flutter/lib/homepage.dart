@@ -44,17 +44,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -90,56 +79,69 @@ class _HomePageState extends State<HomePage> {
           //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              'lib/images/logo_header.jpg',
-              width: 900,
-              height: 300,
-              fit: BoxFit.contain,
+            Text(bleHandler.connectedDevice == null
+                ? "Please connect a device"
+                : bleHandler.connectedDevice!.name),
+            ElevatedButton(
+              onPressed: bleHandler.connectedDevice == null
+                  ? connectDevicePrompt
+                  : disconnectDevice,
+              child: Text(bleHandler.connectedDevice == null
+                  ? "Connect"
+                  : "Disconnect"),
             ),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-              children:[
-                Container(
-                  margin: EdgeInsets.all(20),
-                  alignment: Alignment.center,
-                  child: ElevatedButton(
-                    child: Text("click me"),
-                    onPressed: () {
-                      print('you clicked me');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: AppColors.purple,
+            if (bleHandler.connectedDevice != null)
+              Image.asset(
+                'lib/images/logo_header.jpg',
+                width: 900,
+                height: 300,
+                fit: BoxFit.contain,
+              ),
+            if (bleHandler.connectedDevice != null)
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                children:[
+                  Container(
+                    margin: EdgeInsets.all(20),
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      child: Text("click me"),
+                      onPressed: () {
+                        print('you clicked me');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: AppColors.purple,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.all(20),
-                  child: ElevatedButton(
-                    child: Text("click me"),
-                    onPressed: () {
-                      print('you clicked me');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: AppColors.purple,
+                  Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.all(20),
+                    child: ElevatedButton(
+                      child: Text("click me"),
+                      onPressed: () {
+                        print('you clicked me');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: AppColors.purple,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.all(20),
-                  child: ElevatedButton(
-                    child: Text("click me"),
-                    onPressed: () {
-                      print('you clicked me');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: AppColors.purple,
+                  Container(
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.all(20),
+                    child: ElevatedButton(
+                      child: Text("click me"),
+                      onPressed: () {
+                        print('you clicked me');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: AppColors.purple,
+                      ),
                     ),
                   ),
-                ),
-              ] //children
-            ),
+                ] //children
+              ),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
