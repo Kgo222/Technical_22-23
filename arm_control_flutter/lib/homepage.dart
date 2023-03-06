@@ -3,9 +3,12 @@ import 'package:arm_control_flutter/theme.dart';
 import 'theme.dart';
 
 
+
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
   final String title;
+
 
   // This widget is the root of your application.
   @override
@@ -13,25 +16,20 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
 
+
   double _currentSliderValue1 = 20;
   double _currentSliderValue2 = 20;
   double _currentSliderValue3 = 20;
   double _currentSliderValue4 = 20;
   double _currentSliderValue5 = 20;
   double _currentSliderValue6 = 20;
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
-  }
+
+
 
 
   @override
   Widget build(BuildContext context) {
+
 
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -67,31 +65,54 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              'lib/images/logo_header.jpg',
+              'lib/images/HeaderImage.jpg',
               width: 900,
               height: 300,
               fit: BoxFit.contain,
             ),
+
+
+
             Row( //slider 1
               children:[
+                Padding(padding: EdgeInsets.only(left:15),
+                  child:Text(// ignore: prefer_const_constructors
+                    'Claw',
+                    style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
+
+                  ),
+                ),
                 Expanded(
-                child: Slider( //Slider 1
-                  value: _currentSliderValue1,
-                  max: 100,
-                  divisions: 100,
-                  label: _currentSliderValue1.round().toString(),
-                  activeColor: AppColors.purple,
-                  inactiveColor: AppColors.cream,
-                  onChanged: (double value) {
-                    setState(() {
-                      _currentSliderValue1 = value;
-                    });
-                  },
-               )),
+
+                  child: Slider( //Slider 1
+                    value: _currentSliderValue1,
+                    max: 100,
+                    divisions: 100,
+                    label: _currentSliderValue1.round().toString(),
+                    activeColor: AppColors.purple,
+                    inactiveColor: AppColors.cream,
+                    onChanged: (double value) {
+                      setState(() {
+                        _currentSliderValue1 = value;
+                      });
+                    },
+                  ),
+
+
+                ),
+
               ],
             ),
+
             Row( // Slider 2
               children:[
+                Padding(padding: EdgeInsets.only(left:15),
+                  child:Text(// ignore: prefer_const_constructors
+                    'Wrist',
+                    style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
+
+                  ),
+                ),
                 Expanded(
                     child: Slider(
                       value: _currentSliderValue2,
@@ -106,11 +127,20 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                     )),
+
               ],
             ),
             Row( //slider 3
               children:[
+                Padding(padding: EdgeInsets.only(left:15),
+                  child:Text(// ignore: prefer_const_constructors
+                    'Elbow 2',
+                    style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
+
+                  ),
+                ),
                 Expanded(
+
                     child: Slider(
                       value: _currentSliderValue3,
                       max: 100,
@@ -128,6 +158,13 @@ class _HomePageState extends State<HomePage> {
             ),
             Row( //slider 4
               children:[
+                Padding(padding: EdgeInsets.only(left:15),
+                  child:Text(// ignore: prefer_const_constructors
+                    'Elbow 1',
+                    style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
+
+                  ),
+                ),
                 Expanded(
                     child: Slider(
                       value: _currentSliderValue4,
@@ -146,6 +183,13 @@ class _HomePageState extends State<HomePage> {
             ),
             Row( //Slider 5
               children:[
+                Padding(padding: EdgeInsets.only(left:15),
+                  child:Text(// ignore: prefer_const_constructors
+                    'Shoulder',
+                    style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
+
+                  ),
+                ),
                 Expanded(
                     child: Slider(
                       value: _currentSliderValue5,
@@ -162,8 +206,15 @@ class _HomePageState extends State<HomePage> {
                     )),
               ],
             ),
-            Row( //slider 6
+            Row( //Slider 6
               children:[
+                Padding(padding: EdgeInsets.only(left:15),
+                  child:Text(// ignore: prefer_const_constructors
+                    'Base',
+                    style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
+
+                  ),
+                ),
                 Expanded(
                     child: Slider(
                       value: _currentSliderValue6,
@@ -181,52 +232,45 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-              children:[
-                Container( //Button 1
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.all(20),
-                  child: ElevatedButton(
-                    child: Text("click me"),
-                    onPressed: () {
-                      print('you clicked me');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: AppColors.purple,
+                children:[
+                  Container( //Button 1
+                    margin: EdgeInsets.all(20),
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      child: Text("click me"),
+                      onPressed: () {
+                        print('you clicked me');
+                      },
                     ),
                   ),
-                ),
-                Container( //Button 2
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.all(20),
-                  child: ElevatedButton(
-                    child: Text("click me"),
-                    onPressed: () {
-                      print('you clicked me');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: AppColors.purple,
+                  Container( //Button 2
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.all(20),
+                    child: ElevatedButton(
+                      child: Text("click me"),
+                      onPressed: () {
+                        print('you clicked me');
+                      },
                     ),
                   ),
-                ),
-                Container( //Button 3
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.all(20),
-                  child: ElevatedButton(
-                    child: Text("click me"),
-                    onPressed: () {
-                      print('you clicked me');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: AppColors.purple,
+                  Container( //Button 3
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.all(20),
+                    child: ElevatedButton(
+                      child: Text("click me"),
+                      onPressed: () {
+                        print('you clicked me');
+                      },
                     ),
                   ),
-                ),
-              ] //children
+                ] //children
             ),
-        ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+          ],
+        ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );
   }
 }
+
+
+
