@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:arm_control_flutter/bluetooth_handler.dart';
 import 'package:arm_control_flutter/theme.dart';
+import 'globals.dart';
 import 'theme.dart';
-
-
-
+import 'bluetooth_handler.dart';
+import 'bluetooth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -16,6 +17,17 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
 
+  @override
+  void initState() {
+    super.initState();
+    bleHandler = BLEHandler(setStateCallback);
+    //TODO run at startup
+  }
+
+  void setStateCallback() {
+    setState(() {});
+  }
+
 
   double _currentSliderValue1 = 20;
   double _currentSliderValue2 = 20;
@@ -25,7 +37,20 @@ class _HomePageState extends State<HomePage> {
   double _currentSliderValue6 = 20;
 
 
+  void connectDevicePrompt() {
+    // Show prompt for connecting a device
+    showModalBottomSheet<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return const BluetoothConnectScreen();
+        });
+  }
 
+  void disconnectDevice() {
+    setState(() {
+      bleHandler.disconnect();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +89,19 @@ class _HomePageState extends State<HomePage> {
           //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
+            Text(bleHandler.connectedDevice == null
+                ? "Please connect a device"
+                : bleHandler.connectedDevice!.name),
+            ElevatedButton(
+              onPressed: bleHandler.connectedDevice == null
+                  ? connectDevicePrompt
+                  : disconnectDevice,
+              child: Text(bleHandler.connectedDevice == null
+                  ? "Connect"
+                  : "Disconnect"),
+            ),
+            if (bleHandler.connectedDevice != null)
+              Image.asset(
               'lib/images/HeaderImage.jpg',
               width: 900,
               height: 300,
@@ -72,8 +109,8 @@ class _HomePageState extends State<HomePage> {
             ),
 
 
-
-            Row( //slider 1
+            if (bleHandler.connectedDevice != null)
+              Row( //slider 1
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
@@ -103,8 +140,8 @@ class _HomePageState extends State<HomePage> {
 
               ],
             ),
-
-            Row( // Slider 2
+            if (bleHandler.connectedDevice != null)
+              Row( // Slider 2
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
@@ -130,7 +167,8 @@ class _HomePageState extends State<HomePage> {
 
               ],
             ),
-            Row( //slider 3
+            if (bleHandler.connectedDevice != null)
+              Row( //slider 3
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
@@ -156,7 +194,8 @@ class _HomePageState extends State<HomePage> {
                     )),
               ],
             ),
-            Row( //slider 4
+            if (bleHandler.connectedDevice != null)
+              Row( //slider 4
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
@@ -181,7 +220,8 @@ class _HomePageState extends State<HomePage> {
                     )),
               ],
             ),
-            Row( //Slider 5
+            if (bleHandler.connectedDevice != null)
+              Row( //Slider 5
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
@@ -206,7 +246,8 @@ class _HomePageState extends State<HomePage> {
                     )),
               ],
             ),
-            Row( //Slider 6
+            if (bleHandler.connectedDevice != null)
+              Row( //Slider 6
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
@@ -231,7 +272,8 @@ class _HomePageState extends State<HomePage> {
                     )),
               ],
             ),
-            Row(
+            if (bleHandler.connectedDevice != null)
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   Container( //Button 1
