@@ -8,9 +8,10 @@ import 'package:flutter/material.dart';
 class AppColors {
   // Flutter colors are RGB color codes prefixed with an opacity value.
   // The FF represents full opacity
-  static const purple = Color(0xB4A7D6FF);
+  static const purple = Color(0xFFB4A7D5);
   static const tan = Color(0xFFEEDEC9);
   static const pink = Color(0xFFF7BDBE);
+  static const cream = Color(0xFFFDFBFE);
 }
 
 ColorScheme colorScheme = const ColorScheme.dark(
