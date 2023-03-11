@@ -232,6 +232,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children:[
                   Container( //Button 1
                     margin: EdgeInsets.all(20),
