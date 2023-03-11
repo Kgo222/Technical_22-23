@@ -68,10 +68,11 @@ class _HomePageState extends State<HomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
+      body: ListView(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
+        children: [ Column(
+
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -89,9 +90,12 @@ class _HomePageState extends State<HomePage> {
           //mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(bleHandler.connectedDevice == null
-                ? "Please connect a device"
-                : bleHandler.connectedDevice!.name),
+            Padding(padding: EdgeInsets.only(left:15),
+              child: Text(bleHandler.connectedDevice == null
+                  ? "Please connect a device"
+                  : bleHandler.connectedDevice!.name,
+                  style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),),
+            ),
             ElevatedButton(
               onPressed: bleHandler.connectedDevice == null
                   ? connectDevicePrompt
@@ -310,7 +314,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ), // This trailing comma makes auto-formatting nicer for build methods.
-      ),
+      ]),
     );
   }
 }

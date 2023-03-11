@@ -69,8 +69,6 @@ class BLEHandler {
   }
 
   void disconnect() {
-    notificationSubscription.cancel();
-    connectionStateSubscription.cancel();
     if(connectedDevice != null) {
       connectedDevice!.disconnect();
       connectedDevice = null;
