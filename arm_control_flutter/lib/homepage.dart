@@ -16,8 +16,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 class _HomePageState extends State<HomePage> {
-
-  int _counter = 0;
   @override
   void initState() {
     super.initState();
@@ -76,8 +74,7 @@ class _HomePageState extends State<HomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          //mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(bleHandler.connectedDevice == null
                 ? "Please connect a device"
