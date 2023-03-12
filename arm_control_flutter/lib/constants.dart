@@ -2,5 +2,5 @@
 class Constants {
   static const String appName = "S.U.N.D.A.Y Robot";
 
-  static const String uuid = "0000FFE0-000-1000-8000-00805F9B34FB";
+  static const String uuid = "0000ffe1-0000-1000-8000-00805f9b34fb";
 }

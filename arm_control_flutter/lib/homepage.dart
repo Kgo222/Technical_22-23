@@ -135,6 +135,7 @@ class _HomePageState extends State<HomePage> {
                     onChanged: (double value) {
                       setState(() {
                         _currentSliderValue1 = value;
+                        bleHandler.bluetoothWrite(_currentSliderValue1, "1");
                       });
                     },
                   ),
@@ -165,6 +166,7 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (double value) {
                         setState(() {
                           _currentSliderValue2 = value;
+                          bleHandler.bluetoothWrite(_currentSliderValue2, "2");
                         });
                       },
                     )),
@@ -193,6 +195,7 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (double value) {
                         setState(() {
                           _currentSliderValue3 = value;
+                          bleHandler.bluetoothWrite(_currentSliderValue3, "3");
                         });
                       },
                     )),
@@ -219,6 +222,7 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (double value) {
                         setState(() {
                           _currentSliderValue4 = value;
+                          bleHandler.bluetoothWrite(_currentSliderValue4, "4");
                         });
                       },
                     )),
@@ -245,6 +249,7 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (double value) {
                         setState(() {
                           _currentSliderValue5 = value;
+                          bleHandler.bluetoothWrite(_currentSliderValue5, "5");
                         });
                       },
                     )),
@@ -271,6 +276,7 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (double value) {
                         setState(() {
                           _currentSliderValue6 = value;
+                          bleHandler.bluetoothWrite(_currentSliderValue6, "6");
                         });
                       },
                     )),
@@ -284,9 +290,10 @@ class _HomePageState extends State<HomePage> {
                     margin: EdgeInsets.all(20),
                     alignment: Alignment.center,
                     child: ElevatedButton(
-                      child: Text("click me"),
+                      child: Text("Reset"),
                       onPressed: () {
                         print('you clicked me');
+                        bleHandler.bluetoothWrite("RESET", "RESET");
                       },
                     ),
                   ),

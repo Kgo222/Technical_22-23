@@ -53,7 +53,7 @@ class BLEHandler {
         if (characteristic.uuid.toString() == Constants.uuid) {
           // Format data
           String data = "#" + sliderNum.toString() + "|" + sliderVal.toString();
-
+          print("slider changed");
           if (Platform.isAndroid)
           {
             await characteristic.write(utf8.encode(data), withoutResponse: true);
