@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter/material.dart';
 import 'package:arm_control_flutter/globals.dart';
+import 'package:arm_control_flutter/homepage.dart';
 
 // Bluetooth connection screen
 class BluetoothConnectScreen extends StatefulWidget {

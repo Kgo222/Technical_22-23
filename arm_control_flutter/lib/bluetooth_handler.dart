@@ -4,6 +4,7 @@ import 'package:flutter_blue/flutter_blue.dart';
 import 'package:arm_control_flutter/globals.dart';
 import 'dart:convert';
 import 'package:arm_control_flutter/constants.dart';
+import "homepage.dart";
 import 'dart:io' show Platform;
 
 class BLEHandler {
@@ -19,6 +20,7 @@ class BLEHandler {
   Future<void> connect(BluetoothDevice device) async {
     try {
       await device.connect();
+      //reset robot to original state
     } on PlatformException catch(e) {
       if (e.code == 'already_connected') {
         // We really shouldn't end up here
@@ -52,7 +54,7 @@ class BLEHandler {
       for (BluetoothCharacteristic characteristic in service.characteristics) {
         if (characteristic.uuid.toString() == Constants.uuid) {
           // Format data
-          String data = "#" + sliderNum.toString() + "|" + sliderVal.toString();
+          String data = sliderNum.toString() + "|" + sliderVal.toString()+"%";
           print(data); //For debug purposes only
           if (Platform.isAndroid)
           {
