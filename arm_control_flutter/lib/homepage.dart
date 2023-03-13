@@ -102,7 +102,8 @@ class _HomePageState extends State<HomePage> {
                   : disconnectDevice,
               child: Text(bleHandler.connectedDevice == null
                   ? "Connect"
-                  : "Disconnect"),
+                  : "Disconnect",
+                  style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),),
             ),
             if (bleHandler.connectedDevice != null)
               Image.asset(
@@ -293,7 +294,7 @@ class _HomePageState extends State<HomePage> {
                       child: Text("Reset"),
                       onPressed: () {
                         print('you clicked me');
-                        bleHandler.bluetoothWrite("RESET", "RESET");
+                        bleHandler.bluetoothWrite("!", "RESET");
                       },
                     ),
                   ),

@@ -68,7 +68,8 @@ class _BluetoothConnectScreen extends State<BluetoothConnectScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Connect a Device'),
+        title: const Text('Connect a Device',
+            style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),),
         centerTitle: true,
       ),
       body: RefreshIndicator(
@@ -79,7 +80,8 @@ class _BluetoothConnectScreen extends State<BluetoothConnectScreen> {
           children: deviceList.map((device) {
             return Card(
               child: ListTile(
-                title: Text(device.name + " (" + device.id.toString() + ")"),
+                title: Text(device.name + " (" + device.id.toString() + ")"
+                    ,style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),),
                 trailing: TextButton(
                   onPressed: () => connectDevice(device),
                   child: const Text("Connect"),
