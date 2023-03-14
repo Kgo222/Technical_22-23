@@ -336,8 +336,31 @@ class _HomePageState extends State<HomePage> {
                     child: ElevatedButton(
                       child: Text("Reset"),
                       onPressed: () {
-                        print('you clicked me');
-                        bleHandler.bluetoothWrite("!", "RESET");
+                        showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: const Text('Please Wait',
+                                style: TextStyle(color: Color.fromARGB(255, 4, 6, 4)),),
+                            content: const Text('Resetting the Robot takes 20-30 seconds. '
+                                'Let it complete its changes before clicking more options',
+                              style: TextStyle(color: Color.fromARGB(255, 4, 6, 4)),),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, 'OK'),
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          ),
+                        );
+                        if(oneInAction==0 && twoInAction==0 && threeInAction==0 && fourInAction==0 && fiveInAction==0 && sixInAction==0){
+                          bleHandler.bluetoothWrite("!", "RESET");
+                           _currentSliderValue1 = 90;
+                           _currentSliderValue2 = 150;
+                           _currentSliderValue3 = 35;
+                           _currentSliderValue4 = 140;
+                           _currentSliderValue5 = 85;
+                           _currentSliderValue6 = 80;
+                        }
                       },
                     ),
                   ),

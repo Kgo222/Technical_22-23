@@ -74,7 +74,7 @@ void loop() {
          }
 
          //SLIDER 2 changed
-         if(dataIn.startsWith("#2")){ 
+         else if(dataIn.startsWith("#2")){ 
             servo2Next = degree.toInt(); //convert degree string to integer
             Serial.print("Next: ");
             Serial.println(servo2Next);
@@ -84,7 +84,7 @@ void loop() {
          }
 
          //SLIDER 3 changed
-          if(dataIn.startsWith("#3")){ 
+          else if(dataIn.startsWith("#3")){ 
             servo3Next = degree.toInt(); //convert degree string to integer
             Serial.print("Next: ");
             Serial.println(servo3Next);
@@ -94,7 +94,7 @@ void loop() {
          }
 
          //SLIDER 4 changed 
-         if(dataIn.startsWith("#4")){ 
+         else if(dataIn.startsWith("#4")){ 
             servo4Next = degree.toInt(); //convert degree string to integer
             Serial.print("Next: ");
             Serial.println(servo4Next);
@@ -104,7 +104,7 @@ void loop() {
          }
 
          //SLIDER 5 changed
-         if(dataIn.startsWith("#5")){ 
+         else if(dataIn.startsWith("#5")){ 
             servo5Next = degree.toInt(); //convert degree string to integer
             Serial.print("Next: ");
             Serial.println(servo5Next);
@@ -114,13 +114,23 @@ void loop() {
          }
 
          //SLIDER 6 changed
-         if(dataIn.startsWith("#6")){ 
+         else if(dataIn.startsWith("#6")){ 
             servo6Next = degree.toInt(); //convert degree string to integer
             Serial.print("Next: ");
             Serial.println(servo6Next);
             changeServo(&servo6Prev, &servo6Next, servo6);
             Serial.print("Prev: ");
             Serial.println(servo6Prev);
+         }
+
+         else if(dataIn.startsWith("RESET")){ //Put arms back to original places
+          changeServo(&servo1Prev, 90, servo1);
+          changeServo(&servo2Prev, 150, servo2);
+          changeServo(&servo3Prev, 35, servo3);
+          changeServo(&servo4Prev, 140, servo4);
+          changeServo(&servo5Prev, 85, servo5);
+          changeServo(&servo6Prev, 80, servo6);
+          Serial.println("RESET COMPLETE");
          }
          dataIn = ""; //reset dataIn variable
     }
