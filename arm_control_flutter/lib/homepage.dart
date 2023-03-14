@@ -18,11 +18,18 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   double _currentSliderValue1 = 90;
-  double _currentSliderValue2 = 20;
-  double _currentSliderValue3 = 20;
-  double _currentSliderValue4 = 20;
-  double _currentSliderValue5 = 20;
-  double _currentSliderValue6 = 20;
+  double _currentSliderValue2 = 150;
+  double _currentSliderValue3 = 35;
+  double _currentSliderValue4 = 140;
+  double _currentSliderValue5 = 85;
+  double _currentSliderValue6 = 80;
+  //Tracks if a slider is being updated (1-in use, 0-otherwise)
+  int oneInAction = 0;
+  int twoInAction = 0;
+  int threeInAction = 0;
+  int fourInAction = 0;
+  int fiveInAction = 0;
+  int sixInAction = 0;
 
   @override
   void initState() {
@@ -134,12 +141,16 @@ class _HomePageState extends State<HomePage> {
                     activeColor: AppColors.purple,
                     inactiveColor: AppColors.cream,
                     onChanged: (double value) {
-                      setState(() {
-                        _currentSliderValue1 = value;
-                      });
+                      if(twoInAction == 0 && threeInAction == 0 && fourInAction == 0 && fiveInAction == 0 && sixInAction==0){
+                        setState(() {
+                          _currentSliderValue1 = value;
+                          oneInAction = 1;
+                        });
+                      }
                     },
                     onChangeEnd: (double value){
                       bleHandler.bluetoothWrite(value.round(), "#1");
+                      oneInAction = 0;
                     },
                   ),
 
@@ -167,12 +178,16 @@ class _HomePageState extends State<HomePage> {
                       activeColor: AppColors.purple,
                       inactiveColor: AppColors.cream,
                       onChanged: (double value) {
-                        setState(() {
-                          _currentSliderValue2 = value;
-                        });
+                        if(oneInAction == 0 && threeInAction == 0 && fourInAction == 0 && fiveInAction == 0 && sixInAction==0){
+                          setState(() {
+                            _currentSliderValue2 = value;
+                            twoInAction = 1;
+                          });
+                        }
                       },
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#2");
+                        twoInAction = 0;
                       },
                     )),
 
@@ -198,12 +213,16 @@ class _HomePageState extends State<HomePage> {
                       activeColor: AppColors.purple,
                       inactiveColor: AppColors.cream,
                       onChanged: (double value) {
-                        setState(() {
-                          _currentSliderValue3 = value;
-                        });
+                        if(oneInAction == 0 && twoInAction == 0 && fourInAction == 0 && fiveInAction == 0 && sixInAction==0){
+                          setState(() {
+                            _currentSliderValue3 = value;
+                            threeInAction = 1;
+                          });
+                        }
                       },
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#3");
+                        threeInAction = 0;
                       },
                     )),
               ],
@@ -227,12 +246,16 @@ class _HomePageState extends State<HomePage> {
                       activeColor: AppColors.purple,
                       inactiveColor: AppColors.cream,
                       onChanged: (double value) {
-                        setState(() {
-                          _currentSliderValue4 = value;
-                        });
+                        if(oneInAction == 0 && twoInAction == 0 && threeInAction == 0 && fiveInAction == 0 && sixInAction==0){
+                          setState(() {
+                            _currentSliderValue4 = value;
+                            fourInAction = 1;
+                          });
+                        }
                       },
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#4");
+                        fourInAction = 0;
                       },
                     )),
               ],
@@ -256,12 +279,16 @@ class _HomePageState extends State<HomePage> {
                       activeColor: AppColors.purple,
                       inactiveColor: AppColors.cream,
                       onChanged: (double value) {
-                        setState(() {
-                          _currentSliderValue5 = value;
-                        });
+                        if(oneInAction == 0 && twoInAction == 0 && threeInAction == 0 && fourInAction == 0 && sixInAction==0){
+                          setState(() {
+                            _currentSliderValue5 = value;
+                            fiveInAction = 1;
+                          });
+                        }
                       },
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#5");
+                        fiveInAction = 0;
                       },
                     )),
               ],
@@ -277,7 +304,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Expanded(
-                    child: Slider(
+                    child: Slider(//Slider 6
                       value: _currentSliderValue6,
                       max: 180,
                       divisions: 180,
@@ -285,12 +312,16 @@ class _HomePageState extends State<HomePage> {
                       activeColor: AppColors.purple,
                       inactiveColor: AppColors.cream,
                       onChanged: (double value) {
-                        setState(() {
-                          _currentSliderValue6 = value;
-                        });
+                        if(oneInAction == 0 && twoInAction == 0 && threeInAction == 0 && fourInAction == 0 && fiveInAction==0){
+                          setState(() {
+                            _currentSliderValue6 = value;
+                            sixInAction = 1;
+                          });
+                        }
                       },
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#6");
+                        sixInAction = 0;
                       },
                     )),
               ],
