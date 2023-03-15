@@ -17,10 +17,10 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
 
-  double _currentSliderValue1 = 90;
+  double _currentSliderValue1 = 20;
   double _currentSliderValue2 = 150;
-  double _currentSliderValue3 = 35;
-  double _currentSliderValue4 = 140;
+  double _currentSliderValue3 = 90;
+  double _currentSliderValue4 = 180;
   double _currentSliderValue5 = 85;
   double _currentSliderValue6 = 80;
   //Tracks if a slider is being updated (1-in use, 0-otherwise)
@@ -135,8 +135,8 @@ class _HomePageState extends State<HomePage> {
 
                   child: Slider( //Slider 1
                     value: _currentSliderValue1,
-                    max: 180,
-                    divisions: 180,
+                    max: 50,
+                    divisions: 50,
                     label: _currentSliderValue1.round().toString(),
                     activeColor: AppColors.purple,
                     inactiveColor: AppColors.cream,
@@ -306,8 +306,8 @@ class _HomePageState extends State<HomePage> {
                 Expanded(
                     child: Slider(//Slider 6
                       value: _currentSliderValue6,
-                      max: 180,
-                      divisions: 180,
+                      max: 90,
+                      divisions: 90,
                       label: _currentSliderValue6.round().toString(),
                       activeColor: AppColors.purple,
                       inactiveColor: AppColors.cream,
@@ -354,10 +354,10 @@ class _HomePageState extends State<HomePage> {
                         );
                         if(oneInAction==0 && twoInAction==0 && threeInAction==0 && fourInAction==0 && fiveInAction==0 && sixInAction==0){
                           bleHandler.bluetoothWrite("!", "RESET");
-                           _currentSliderValue1 = 90;
+                           _currentSliderValue1 = 20;
                            _currentSliderValue2 = 150;
-                           _currentSliderValue3 = 35;
-                           _currentSliderValue4 = 140;
+                           _currentSliderValue3 = 90;
+                           _currentSliderValue4 = 180;
                            _currentSliderValue5 = 85;
                            _currentSliderValue6 = 80;
                         }
