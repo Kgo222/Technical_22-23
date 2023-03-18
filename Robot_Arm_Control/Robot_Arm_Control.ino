@@ -28,22 +28,22 @@ void setup() {
   Serial.begin(9600);
 
   //Servo initial positions
-  servo1Prev = 20;
+  servo1Prev = 50;
   servo1.write(servo1Prev);
   delay(2000); //delay a second between each change
-  servo2Prev = 150;
+  servo2Prev = 90;
   servo2.write(servo2Prev);
   delay(2000);
-  servo3Prev = 90;
+  servo3Prev = 25;
   servo3.write(servo3Prev);
   delay(2000);
   servo4Prev = 180;
   servo4.write(servo4Prev);
   delay(2000);
-  servo5Prev = 85;
+  servo5Prev = 160;
   servo5.write(servo5Prev);
   delay(2000);
-  servo6Prev = 80;
+  servo6Prev = 40;
   servo6.write(servo6Prev);
   delay(2000);
 }
@@ -138,12 +138,12 @@ void loop() {
          }
 
          else if(dataIn.startsWith("RESET")){ //Put arms back to original places
-          changeServo(&servo1Prev, 20, servo1);
-          changeServo(&servo2Prev, 150, servo2);
-          changeServo(&servo3Prev, 35, servo3);
-          changeServo(&servo4Prev, 140, servo4);
-          changeServo(&servo5Prev, 85, servo5);
-         changeServo(&servo6Prev, 80, servo6);
+          changeServo(&servo1Prev, 50, servo1);
+          changeServo(&servo2Prev, 90, servo2);
+          changeServo(&servo3Prev, 25, servo3);
+          changeServo(&servo4Prev, 180, servo4);
+          changeServo(&servo5Prev, 160, servo5);
+         changeServo(&servo6Prev, 40, servo6);
           Serial.println("RESET COMPLETE");
          }
          dataIn = ""; //reset dataIn variable
@@ -155,14 +155,14 @@ void changeServo(int* prev, int* next, Servo servo){ //pass by reference so we c
   if (*prev > *next) {
         for ( int j = *prev; j >= *next; j--) {   // Run servo down
           servo.write(j);
-          delay(100);    // defines the speed at which the servo rotates
+          delay(20);    // defines the speed at which the servo rotates
         }
   }
       // If previous position is smaller then current position
   if (*prev < *next) {
       for ( int j = *prev; j <= *next; j++) {   // Run servo up
           servo.write(j);
-          delay(100);
+          delay(20);
       }
    }
    *prev = *next;   // set current position as previous position
