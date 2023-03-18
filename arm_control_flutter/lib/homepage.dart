@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
 
-  double _currentSliderValue1 = 50;
+  double _currentSliderValue1 = 25;
   double _currentSliderValue2 = 90;
   double _currentSliderValue3 = 25;
   double _currentSliderValue4 = 180;
@@ -30,6 +30,7 @@ class _HomePageState extends State<HomePage> {
   int fourInAction = 0;
   int fiveInAction = 0;
   int sixInAction = 0;
+  int justReset = 1;
 
   @override
   void initState() {
@@ -151,6 +152,7 @@ class _HomePageState extends State<HomePage> {
                     onChangeEnd: (double value){
                       bleHandler.bluetoothWrite(value.round(), "#1");
                       oneInAction = 0;
+                      justReset = 0;
                     },
                   ),
 
@@ -188,6 +190,7 @@ class _HomePageState extends State<HomePage> {
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#2");
                         twoInAction = 0;
+                        justReset = 0;
                       },
                     )),
 
@@ -223,6 +226,7 @@ class _HomePageState extends State<HomePage> {
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#3");
                         threeInAction = 0;
+                        justReset = 0;
                       },
                     )),
               ],
@@ -256,6 +260,7 @@ class _HomePageState extends State<HomePage> {
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#4");
                         fourInAction = 0;
+                        justReset = 0;
                       },
                     )),
               ],
@@ -289,6 +294,7 @@ class _HomePageState extends State<HomePage> {
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#5");
                         fiveInAction = 0;
+                        justReset = 0;
                       },
                     )),
               ],
@@ -322,6 +328,7 @@ class _HomePageState extends State<HomePage> {
                       onChangeEnd: (double value){
                         bleHandler.bluetoothWrite(value.round(), "#6");
                         sixInAction = 0;
+                        justReset = 0;
                       },
                     )),
               ],
@@ -354,7 +361,8 @@ class _HomePageState extends State<HomePage> {
                         );
                         if(oneInAction==0 && twoInAction==0 && threeInAction==0 && fourInAction==0 && fiveInAction==0 && sixInAction==0){
                           bleHandler.bluetoothWrite("!", "RESET");
-                           _currentSliderValue1 = 50;
+                          justReset = 1;
+                           _currentSliderValue1 = 25;
                            _currentSliderValue2 = 90;
                            _currentSliderValue3 = 25;
                            _currentSliderValue4 = 180;
@@ -368,19 +376,59 @@ class _HomePageState extends State<HomePage> {
                     alignment: Alignment.center,
                     margin: EdgeInsets.all(20),
                     child: ElevatedButton(
-                      child: Text("click me"),
+                      child: Text("Wave"),
                       onPressed: () {
-                        print('you clicked me');
-                      },
+                        if(justReset ==1){
+                        bleHandler.bluetoothWrite("!", "Wave");
+                         }
+                        else{
+                          showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: const Text('Reset First',
+                                style: TextStyle(color: Color.fromARGB(255, 4, 6, 4)),),
+                              content: const Text('Please Press the Reset Button before '
+                                  'selecting one of the sequence options',
+                                style: TextStyle(color: Color.fromARGB(255, 4, 6, 4)),),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                        },
                     ),
                   ),
                   Container( //Button 3
                     alignment: Alignment.center,
                     margin: EdgeInsets.all(20),
                     child: ElevatedButton(
-                      child: Text("click me"),
+                      child: Text("Pick UP"),
                       onPressed: () {
-                        print('you clicked me');
+                        if(justReset ==1){
+                          bleHandler.bluetoothWrite("!", "PICKUP");
+                        }
+                        else{
+                          showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: const Text('Reset First',
+                                style: TextStyle(color: Color.fromARGB(255, 4, 6, 4)),),
+                              content: const Text('Please Press the Reset Button before '
+                                  'selecting one of the sequence options',
+                                style: TextStyle(color: Color.fromARGB(255, 4, 6, 4)),),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
                       },
                     ),
                   ),

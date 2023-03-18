@@ -138,7 +138,7 @@ void loop() {
          }
 
          else if(dataIn.startsWith("RESET")){ //Put arms back to original places
-          int reset1 = 50;
+          int reset1 = 25;
           int reset2 = 90;
           int reset3 = 25;
           int reset4 = 180;
@@ -152,12 +152,44 @@ void loop() {
          changeServo(&servo6Prev, &reset6, servo6);
           Serial.println("RESET COMPLETE");
          }
+         else if(dataIn.startsWith("WAVE")){ //Makes Arm do a waving motion
+          //Angle change steps
+          int first = 90;
+          int second = 90;
+          int third = 50;
+          int fourth = 0;
+          int fifth = 180;
+          int sixth = 0;
+          int seventh = 90;
+          int eighth = 25;
+          int ninth = 45;
+          int tenth = 160;
+          
+          changeServo(&servo5Prev, &first, servo5); //move sholder up
+          changeServo(&servo3Prev, &second, servo3); //move elbow down
+          changeServo(&servo1Prev, &third, servo1);//close claw
+          changeServo(&servo2Prev, &thrid, servo2); //move wrist back and forth (like royal wave)
+          changeServo(&servo2Prev, &fourth, servo2);
+          changeServo(&servo2Prev, &fifth, servo2);
+          changeServo(&servo2Prev, &sixth, servo2);
+          changeServo(&servo1Prev, &eighth, servo1);//open claw
+          changeServo(&servo3Prev, &ninth, servo3); //move elbow back up
+          changeServo(&servo5Prev, &tenth, servo5); //move sholder down
+          
+          Serial.println("WAVE COMPLETE");
+         }
+         else if(dataIn.startsWith("PICKUP")){ //Makes arm do pickup box sequence
+          //FILL WITH FUNCTIONALITY
+          Serial.println("SEQUENCE COMPLETE");
+         }
          dataIn = ""; //reset dataIn variable
     }
   }
 } 
 
 void changeServo(int* prev, int* next, Servo servo){ //pass by reference so we can change values of prev and next
+  Serial.print("next:");
+  Serial.println(*next);
   if (*prev > *next) {
         for ( int j = *prev; j >= *next; j--) {   // Run servo down
           servo.write(j);
