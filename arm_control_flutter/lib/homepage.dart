@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
-                    'Claw',
+                    '1. Claw',
                     style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
 
                   ),
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
-                    'Wrist',
+                    '2. Wrist',
                     style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
 
                   ),
@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> {
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
-                    'Elbow 2',
+                    '3. Elbow 2',
                     style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
 
                   ),
@@ -232,7 +232,7 @@ class _HomePageState extends State<HomePage> {
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
-                    'Elbow 1',
+                    '4. Elbow 1',
                     style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
 
                   ),
@@ -265,7 +265,7 @@ class _HomePageState extends State<HomePage> {
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
-                    'Shoulder',
+                    '5. Shoulder',
                     style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
 
                   ),
@@ -298,7 +298,7 @@ class _HomePageState extends State<HomePage> {
               children:[
                 Padding(padding: EdgeInsets.only(left:15),
                   child:Text(// ignore: prefer_const_constructors
-                    'Base',
+                    '6. Base',
                     style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 4, 6, 4)),
 
                   ),

@@ -30,22 +30,22 @@ void setup() {
   //Servo initial positions
   servo1Prev = 50;
   servo1.write(servo1Prev);
-  delay(2000); //delay a second between each change
+  delay(500); //delay a second between each change
   servo2Prev = 90;
   servo2.write(servo2Prev);
-  delay(2000);
+  delay(500);
   servo3Prev = 25;
   servo3.write(servo3Prev);
-  delay(2000);
+  delay(500);
   servo4Prev = 180;
   servo4.write(servo4Prev);
-  delay(2000);
+  delay(500);
   servo5Prev = 160;
   servo5.write(servo5Prev);
-  delay(2000);
+  delay(500);
   servo6Prev = 40;
   servo6.write(servo6Prev);
-  delay(2000);
+  delay(500);
 }
 
 void loop() {
@@ -138,12 +138,18 @@ void loop() {
          }
 
          else if(dataIn.startsWith("RESET")){ //Put arms back to original places
-          changeServo(&servo1Prev, 50, servo1);
-          changeServo(&servo2Prev, 90, servo2);
-          changeServo(&servo3Prev, 25, servo3);
-          changeServo(&servo4Prev, 180, servo4);
-          changeServo(&servo5Prev, 160, servo5);
-         changeServo(&servo6Prev, 40, servo6);
+          int reset1 = 50;
+          int reset2 = 90;
+          int reset3 = 25;
+          int reset4 = 180;
+          int reset5 = 160;
+          int reset6 = 40;
+          changeServo(&servo1Prev, &reset1, servo1);
+          changeServo(&servo2Prev, &reset2, servo2);
+          changeServo(&servo3Prev, &reset3, servo3);
+          changeServo(&servo4Prev, &reset4, servo4);
+          changeServo(&servo5Prev, &reset6, servo5);
+         changeServo(&servo6Prev, &reset6, servo6);
           Serial.println("RESET COMPLETE");
          }
          dataIn = ""; //reset dataIn variable
