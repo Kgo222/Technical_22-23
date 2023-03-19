@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   double _currentSliderValue1 = 50;
-  double _currentSliderValue2 = 90;
+  double _currentSliderValue2 = 0;
   double _currentSliderValue3 = 25;
   double _currentSliderValue4 = 180;
   double _currentSliderValue5 = 160;
@@ -363,7 +363,7 @@ class _HomePageState extends State<HomePage> {
                           bleHandler.bluetoothWrite("!", "RESET");
                           justReset = 1;
                            _currentSliderValue1 = 50;
-                           _currentSliderValue2 = 90;
+                           _currentSliderValue2 = 0;
                            _currentSliderValue3 = 25;
                            _currentSliderValue4 = 180;
                            _currentSliderValue5 = 160;

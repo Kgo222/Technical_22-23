@@ -31,7 +31,7 @@ void setup() {
   servo1Prev = 50;
   servo1.write(servo1Prev);
   delay(500); //delay a second between each change
-  servo2Prev = 90;
+  servo2Prev = 0;
   servo2.write(servo2Prev);
   delay(500);
   servo3Prev = 25;
@@ -179,7 +179,42 @@ void loop() {
           Serial.println("WAVE COMPLETE");
          }
          else if(dataIn.startsWith("PICKUP")){ //Makes arm do pickup box sequence
-          //FILL WITH FUNCTIONALITY
+          int first = 143;
+          int second = 135;
+          int third = 5;
+          int fourth = 90;
+          int fifth = 0;
+          int sixth = 95;
+          int seventh = 50;
+          int eighth = 135;
+          int ninth = 137;
+          int tenth = 90;
+          int eleventh = 100;
+          int twelth = 0;
+          int thirteenth = 40;
+          int fourteenth = 160;
+          int fifteenth = 140;
+          int sixteenth = 0;
+          int seventeenth = 50;
+          
+
+          changeServo(&servo3Prev, &first, servo3);
+          changeServo(&servo5Prev, &second, servo5);
+          changeServo(&servo6Prev,&third, servo6);
+          changeServo(&servo2Prev,&fourth,servo2);
+          changeServo(&servo1Prev, &fifth, servo1);
+          changeServo(&servo5Prev, &sixth, servo5);
+          changeServo(&servo1Prev, &seventh, servo1);
+          changeServo(&servo5Prev, &eighth, servo5);
+          changeServo(&servo3Prev, &ninth,servo3);
+          changeServo(&servo6Prev, &tenth, servo6);
+          changeServo(&servo5Prev, &eleventh, servo5);
+          changeServo(&servo1Prev, &twelth, servo1);
+          changeServo(&servo6Prev, &thirteenth, servo6);
+          //changeServo(&servo3Prev, &fourteenth, servo3);
+          changeServo(&servo5Prev, &fifteenth, servo5);
+          changeServo(&servo2Prev, &sixteenth, servo2);
+          changeServo(&servo1Prev, &seventeenth, servo1);
           Serial.println("SEQUENCE COMPLETE");
          }
          dataIn = ""; //reset dataIn variable
@@ -193,14 +228,14 @@ void changeServo(int* prev, int* next, Servo servo){ //pass by reference so we c
   if (*prev > *next) {
         for ( int j = *prev; j >= *next; j--) {   // Run servo down
           servo.write(j);
-          delay(20);    // defines the speed at which the servo rotates
+          delay(15);    // defines the speed at which the servo rotates
         }
   }
       // If previous position is smaller then current position
   if (*prev < *next) {
       for ( int j = *prev; j <= *next; j++) {   // Run servo up
           servo.write(j);
-          delay(20);
+          delay(15);
       }
    }
    *prev = *next;   // set current position as previous position
