@@ -138,7 +138,7 @@ void loop() {
          }
 
          else if(dataIn.startsWith("RESET")){ //Put arms back to original places
-          int reset1 = 25;
+          int reset1 = 50;
           int reset2 = 90;
           int reset3 = 25;
           int reset4 = 180;
@@ -148,14 +148,14 @@ void loop() {
           changeServo(&servo2Prev, &reset2, servo2);
           changeServo(&servo3Prev, &reset3, servo3);
           changeServo(&servo4Prev, &reset4, servo4);
-          changeServo(&servo5Prev, &reset6, servo5);
-         changeServo(&servo6Prev, &reset6, servo6);
+          changeServo(&servo5Prev, &reset5, servo5);
+          changeServo(&servo6Prev, &reset6, servo6);
           Serial.println("RESET COMPLETE");
          }
          else if(dataIn.startsWith("WAVE")){ //Makes Arm do a waving motion
           //Angle change steps
-          int first = 90;
-          int second = 90;
+          int first = 135;
+          int second = 33;
           int third = 50;
           int fourth = 0;
           int fifth = 180;
@@ -168,10 +168,10 @@ void loop() {
           changeServo(&servo5Prev, &first, servo5); //move sholder up
           changeServo(&servo3Prev, &second, servo3); //move elbow down
           changeServo(&servo1Prev, &third, servo1);//close claw
-          changeServo(&servo2Prev, &thrid, servo2); //move wrist back and forth (like royal wave)
-          changeServo(&servo2Prev, &fourth, servo2);
+          changeServo(&servo2Prev, &fourth, servo2); //move wrist back and forth (like royal wave)
           changeServo(&servo2Prev, &fifth, servo2);
           changeServo(&servo2Prev, &sixth, servo2);
+          changeServo(&servo2Prev, &seventh, servo2);
           changeServo(&servo1Prev, &eighth, servo1);//open claw
           changeServo(&servo3Prev, &ninth, servo3); //move elbow back up
           changeServo(&servo5Prev, &tenth, servo5); //move sholder down

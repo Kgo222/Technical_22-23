@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 class _HomePageState extends State<HomePage> {
 
-  double _currentSliderValue1 = 25;
+  double _currentSliderValue1 = 50;
   double _currentSliderValue2 = 90;
   double _currentSliderValue3 = 25;
   double _currentSliderValue4 = 180;
@@ -362,7 +362,7 @@ class _HomePageState extends State<HomePage> {
                         if(oneInAction==0 && twoInAction==0 && threeInAction==0 && fourInAction==0 && fiveInAction==0 && sixInAction==0){
                           bleHandler.bluetoothWrite("!", "RESET");
                           justReset = 1;
-                           _currentSliderValue1 = 25;
+                           _currentSliderValue1 = 50;
                            _currentSliderValue2 = 90;
                            _currentSliderValue3 = 25;
                            _currentSliderValue4 = 180;
@@ -379,7 +379,7 @@ class _HomePageState extends State<HomePage> {
                       child: Text("Wave"),
                       onPressed: () {
                         if(justReset ==1){
-                        bleHandler.bluetoothWrite("!", "Wave");
+                        bleHandler.bluetoothWrite("!", "WAVE");
                          }
                         else{
                           showDialog<String>(
