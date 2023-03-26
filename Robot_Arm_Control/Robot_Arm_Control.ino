@@ -139,7 +139,7 @@ void loop() {
 
          else if(dataIn.startsWith("RESET")){ //Put arms back to original places
           int reset1 = 50;
-          int reset2 = 90;
+          int reset2 = 0;
           int reset3 = 25;
           int reset4 = 180;
           int reset5 = 160;
@@ -212,8 +212,8 @@ void loop() {
           changeServo(&servo1Prev, &twelth, servo1);
           changeServo(&servo6Prev, &thirteenth, servo6);
           //changeServo(&servo3Prev, &fourteenth, servo3);
-          changeServo(&servo5Prev, &fifteenth, servo5);
           changeServo(&servo2Prev, &sixteenth, servo2);
+          changeServo(&servo5Prev, &fifteenth, servo5);
           changeServo(&servo1Prev, &seventeenth, servo1);
           Serial.println("SEQUENCE COMPLETE");
          }
