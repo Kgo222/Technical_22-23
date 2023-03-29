@@ -193,28 +193,35 @@ void loop() {
           int twelth = 0;
           int thirteenth = 40;
           int fourteenth = 160;
-          int fifteenth = 140;
+          int fifteenth = 135;
           int sixteenth = 0;
           int seventeenth = 50;
           
 
-          changeServo(&servo3Prev, &first, servo3);
-          changeServo(&servo5Prev, &second, servo5);
-          changeServo(&servo6Prev,&third, servo6);
-          changeServo(&servo2Prev,&fourth,servo2);
-          changeServo(&servo1Prev, &fifth, servo1);
-          changeServo(&servo5Prev, &sixth, servo5);
-          changeServo(&servo1Prev, &seventh, servo1);
-          changeServo(&servo5Prev, &eighth, servo5);
-          changeServo(&servo3Prev, &ninth,servo3);
-          changeServo(&servo6Prev, &tenth, servo6);
-          changeServo(&servo5Prev, &eleventh, servo5);
-          changeServo(&servo1Prev, &twelth, servo1);
-          changeServo(&servo6Prev, &thirteenth, servo6);
+          changeServo(&servo3Prev, &first, servo3); //3 fold forward
+          changeServo(&servo5Prev, &second, servo5); //5 goes down (135)
+          changeServo(&servo6Prev,&third, servo6); //robot turns
+          changeServo(&servo2Prev,&fourth,servo2); //wrist rotates
+          changeServo(&servo1Prev, &fifth, servo1); // claw opens
+          changeServo(&servo5Prev, &sixth, servo5); //5 goes further down (95)
+          changeServo(&servo1Prev, &seventh, servo1); //claw shuts
+          changeServo(&servo5Prev, &eighth, servo5); //5 goes back up to (135)
+          changeServo(&servo3Prev, &ninth,servo3); //3 moves up
+          changeServo(&servo6Prev, &tenth, servo6); //rotate to other side
+          changeServo(&servo5Prev, &eleventh, servo5); //goes down (100)
+          changeServo(&servo1Prev, &twelth, servo1); //open claw + drop box
+
+          changeServo(&servo6Prev, &thirteenth, servo6); //rotate to center
+          changeServo(&servo1Prev, &seventeenth, servo1);
+          changeServo(&servo5Prev, &fifteenth, servo5); //5 goes up to 135
+          changeServo(&servo3Prev, &fourteenth, servo3);
+          changeServo(&servo2Prev, &sixteenth, servo2);
+          
+          /*changeServo(&servo6Prev, &thirteenth, servo6);
           //changeServo(&servo3Prev, &fourteenth, servo3);
           changeServo(&servo2Prev, &sixteenth, servo2);
           changeServo(&servo5Prev, &fifteenth, servo5);
-          changeServo(&servo1Prev, &seventeenth, servo1);
+          changeServo(&servo1Prev, &seventeenth, servo1);*/
           Serial.println("SEQUENCE COMPLETE");
          }
          dataIn = ""; //reset dataIn variable
